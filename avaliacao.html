@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="avaliacao.js" defer></script>
+    
+    <style>
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+    
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #a70f24;
+        height: 50px;
+        display: flex-direction row;
+        flex-direction: row;
+      }
+    
+      .logo img {
+        width: 120px;
+      }
+    
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+      }
+    
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        margin: 5px 0;
+        text-align: right;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+    
+      .nav-links a:hover {
+        background-color: white;
+        color: #a70f24;
+      }
+    
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+    
+      .hamburger span {
+        height: 3px;
+        width: 25px;
+        background-color: aliceblue;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+    
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+    
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100px;
+          right: 0;
+          background-color: #a70f24;
+          width: 100%;
+          padding: 10px;
+          z-index: 1050;
+        }
+    
+        .nav-links.menu-active {
+          display: flex;
+          align-items: flex-end;
+        }
+    
+        .dropdown-menu {
+          display: none;
+          flex-direction: column;
+          padding-left: 10px;
+          background-color: #a70f24 !important;
+          color: white !important;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          z-index: 1050;
+        }
+    
+        .dropdown-menu.show {
+        display: flex ;
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: space-between;
+        align-items: flex-end;
+        }
+    
+        /* Estilo para o celular */
+        .dropdown-menu a {
+          color: white !important; /* Cor branca para celular */
+        }
+      }
+    
+      @media (min-width: 769px) {
+        /* Estilo para o desktop */
+        .dropdown-menu a {
+          color: #a70f24 !important; /* Cor vermelha para desktop */
+        }
+      }
+      .delete-icon {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background-color: red;
+          color: white;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 18px;
+      }
+
+      .feedback-post {
+          position: relative;
+          padding: 15px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+      }
+
+      .rating {
+          margin-top: 10px;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+    
+      .dropdown-menu {
+        display: none; /* Oculto por padrão */
+        position: absolute;
+        background-color: white;
+        color: #a70f24;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-top: 10px;
+      }
+    
+      .dropdown-menu a {
+        color: #a70f24;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: large;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+    
+      .dropdown-menu a:hover {
+        background-color: #a70f24;
+        color: white;
+      }
+
+      /* Estilos para os links do header */
+      header a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: x-large;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px; /* Adiciona um pequeno padding para melhorar o visual */
+}
+
+header a::after {
+    content: "";
+    position: absolute;
+    width: 100%; /* Garante que a linha ocupe toda a largura do link */
+    height: 3px; /* Espessura da linha */
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+header a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+        header a:hover {
+        color: white; 
+        text-decoration: none;
+}
+
+
+     
+  </style>
+</head>
+<body>
+
+      <header>
+        <div class="header-container">
+          <a href="homeAluno.html" class="home-icon">
+            <img src="imagens/home.png" alt="Página Inicial">
+          </a>
+          <div class="nav-links">
+            <a href="ver_cardapio.html">Cardápio</a>
+            <a href="pagamento-aluno.html">Pagar</a>
+            <a href="https://www.canva.com/design/...">Menu</a>
+            <a href="avaliacao.html">Avaliação</a>
+            <a href="perfil-Aluno.html">Perfil</a>
+            <div class="dropdown">
+              <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+                Reserva 
+              </a>
+              <div class="dropdown-menu">
+                <a href="reservas.html" style="color: #a70f24; " >Reservar</a>
+                <br>
+                <br>
+                <a href="suas-reservas.html"style="color: #a70f24;">Histórico </a>
+              </div>
+            </div>
+          </div>
+          <div class="logo">
+            <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+          </div>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+    
+
+<div class="container2">
+    <div class="titulo">
+      <h1>Feedback & Avaliação</h1>
+    </div> 
+
+    <br><br>
+    <main>
+        <section class="feedback-form">
+            <h2>Deixe seu Comentário</h2><br><br>
+            <form id="feedbackForm">
+                <input type="text" id="feedbackInput" placeholder="Compartilhe sua opinião..." required>
+                <div class="rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" id="ratingInput" value="0">
+                <button type="submit" class="botaoEditar">Enviar</button>
+            </form>
+        </section>
+        <section class="feedback-list">
+            <h2>Comentários Recentes</h2>
+            <div id="postsContainer"></div>
+        </section>
+    </main>
+    
+</div>
+
+
+<script>
+      document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o redirecionamento
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+          });
+
+          const hamburger = document.querySelector(".hamburger");
+          const navLinks = document.querySelector(".nav-links");
+          
+          hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("menu-active");
+          });
+          
+          // Funcionalidade de dropdown no celular
+          const dropdownToggle = document.querySelector('.dropdown-toggle');
+          const dropdownMenu = document.querySelector('.dropdown-menu');
+          
+          dropdownToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            dropdownMenu.classList.toggle('show');
+          });
+        
+          // Fecha o menu se o usuário clicar fora
+          window.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(event.target)) {
+              document.querySelector('.dropdown-menu').style.display = 'none';
+            }
+          });
+</script>
+</body>
+</html>

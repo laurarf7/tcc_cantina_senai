@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas dos Usuários</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      .card {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 250px;            /* Largura fixa para os cards */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
+      .caixas {
+        display: flex;
+        flex-direction: column;
+        position: relative; /* Isso permite que o ícone seja posicionado dentro da caixa */
+    }
+      
+      .caixa-reserva {
+        text-align: center;
+      }
+
+      .caixa-reserva2 {
+    width: 100%;
+    height: 250px;
+    background-color: #a70f24;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    color: white;
+    position: relative; /* Permite o posicionamento absoluto dentro da caixa */
+}
+#reservas-admin-lista {
+        display: flex;            /* Alinha os itens em uma linha */
+        flex-wrap: wrap;          /* Permite que os itens quebrem para a próxima linha, se necessário */
+        gap: 20px;                /* Espaçamento entre os cards */
+        justify-content: flex-start; /* Alinha os cards à esquerda (pode usar center ou space-around) */
+        padding: 20px;
+      }
+/* Estilos responsivos */
+@media (max-width: 768px) {
+        #produtos-lista {
+          justify-content: center; /* Centraliza os cards em telas menores */
+        }
+        
+        .card {
+          width: 100%; /* Cards ocupam toda a largura em telas pequenas */
+        }
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #a70f24;
+        height: 50px;
+        display: flex-direction row;
+        flex-direction: row;
+      }
+    
+      .logo img {
+        width: 120px;
+      }
+    
+      .nav-links {
+        display: flex;
+            gap: 20px;
+            align-items: baseline;
+      }
+    
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        margin: 5px 0;
+        text-align: right;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+    
+      .nav-links a:hover {
+        background-color: white ;
+        color: #a70f24;
+      }
+    
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+    
+      .hamburger span {
+        height: 3px;
+        width: 25px;
+        background-color: aliceblue;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+    
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+    
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100px;
+          right: 0;
+          background-color: #a70f24;
+          width: 100%;
+          padding: 10px;
+          z-index: 1050;
+        }
+    
+        .nav-links.menu-active {
+          display: flex;
+          align-items: flex-start;
+        }
+
+         /* Estilo padrão (desktop) */
+  @media (min-width: 768px) {
+    .dropdown-menu a {
+      color: #a70f24 !important; /* Vermelho no desktop */
+    }
+  }
+
+  /* Estilo para mobile */
+  @media (max-width: 768px) {
+    .dropdown-menu a {
+      color: white !important; /* Branco no mobile */
+    }
+  }
+    
+        .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 10px;
+      background-color: #a70f24 !important; /* Garantir que a cor de fundo seja aplicada */
+      color: white !important; /* Garantir que a cor do texto seja aplicada */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+    }
+    
+    .dropdown-menu.show {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .dropdown-perfil {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu-perfil {
+    display: none; /* Oculto por padrão */
+    position: absolute;
+    background-color: white;
+    color: #a70f24;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+  }
+  
+  .dropdown-menu-perfil a {
+    color: #a70f24;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .dropdown-menu-perfil a:hover {
+    background-color: #a70f24;
+    color: white;
+  }
+  
+.apagar-todas {
+  position: fixed;        /* Fixa o botão na tela */
+  top: 111px;              /* Distância do topo */
+  right: 20px;            /* Distância da direita */
+  background-color: #a70f24;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.apagar-todas:hover {
+  background-color: #a70f24;
+  transform: scale(1.05);
+}
+      </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="homeADM.html" class="home-icon">
+        <img src="imagens/home.png" alt="Página Inicial">
+      </a>
+      <div class="nav-links">
+        <div class="dropdown-perfil">
+          <a href="salvarCardapio.html" style="text-decoration: none;" class="dropdown-toggle-perfil">
+            Cardápio 
+          </a>
+          <div class="dropdown-menu-perfil">
+            <a href="salvarCardapio.html">Registrar Cardápio</a>
+            <a href="editarCardapio.html">Editar</a>
+          </div>
+        </div>
+        
+        <a href="resposta_adm.html">Ver Avaliação</a>
+        <a href="pagamento-adm.html">Pagamento</a>
+        <a href="imagens/Cardápio para menu de hambúrguer topográfico preto amarelo escuro e branco.pdf">Menu</a>
+        
+
+
+       
+
+
+        <div class="dropdown">
+          <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+            Reserva 
+          </a>
+          <div class="dropdown-menu">
+            <a href="admin.html" style="color: #a70f24; " >Cadastro</a>
+            <br>
+            <br>
+            <a href="reservas-admin.html"style="color: #a70f24;">Reservas </a>
+          </div>
+        </div>
+      </div>
+      <div class="logo">
+        <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    </header>
+
+
+    <h1 style="text-align: center; padding:15px ;">Reservas dos Usuários</h1>
+    <button id="apagar-todas-reservas" class="apagar-todas">Apagar todas as reservas</button>
+    <div id="reservas-admin-lista"></div>
+    <script src="js/reservas-admin.js"></script>
+
+    <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        const dropdownMenu = this.nextElementSibling;
+        const isVisible = dropdownMenu.style.display === 'block';
+        
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+
+        dropdownMenu.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+
+    // Fecha todos os menus dropdown ao clicar fora
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+
+         // Função para apagar todas as reservas
+         async function apagarTodasReservas() {
+      Swal.fire({
+          title: 'Tem certeza?',
+          text: "Você deseja excluir todas as reservas?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#498dc9',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim, excluir!',
+          cancelButtonText: 'Cancelar'
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+              try {
+                  // Buscar todas as reservas
+                  const response = await fetch("http://localhost:3000/reservas");
+                  if (!response.ok) {
+                      throw new Error("Erro ao buscar as reservas");
+                  }
+  
+                  const reservas = await response.json();
+  
+                  // Excluir cada reserva individualmente
+                  for (const reserva of reservas) {
+                      await fetch(`http://localhost:3000/reservas/${reserva.id}`, {
+                          method: 'DELETE'
+                      });
+                  }
+  
+                  // Limpar a lista de reservas na tela
+                  document.getElementById("suas-reservas-lista").innerHTML = '';
+                  Swal.fire(
+                      'Excluído!',
+                      'Todas as reservas foram excluídas com sucesso.',
+                      'success'
+                  );
+              } catch (error) {
+                  Swal.fire(
+                      'Erro!',
+                      'Ocorreu um erro ao tentar excluir as reservas.',
+                      'error'
+                  );
+              }
+          }
+      });
+  }
+  
+  
+
+  // Adicionando o evento de click no botão para apagar todas as reservas
+  document.getElementById('apagar-todas-reservas').addEventListener('click', apagarTodasReservas);
+
+
+
+
+
+  const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("menu-active");
+    });
+
+    // Funcionalidade de dropdown no celular
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', (event) => {
+      const dropdown = document.querySelector('.dropdown');
+      if (!dropdown.contains(event.target)) {
+        dropdownMenu.classList.remove('show');
+      }
+    }); 
+
+
+    document.querySelector('.dropdown-toggle-perfil').addEventListener('click', function(event) {
+      event.preventDefault(); // Evita o redirecionamento
+      const dropdownMenu = document.querySelector('.dropdown-menu-perfil');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-perfil');
+      if (!dropdown.contains(event.target)) {
+        document.querySelector('.dropdown-menu-perfil').style.display = 'none';
+      }
+    });
+
+      </script>
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

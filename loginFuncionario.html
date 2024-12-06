@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Funcionário</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="tcc.js"></script> -->
+    <script src="tcc.js"></script>
+    
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+          
+
+          <div class="logo">
+            <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+          </div>
+        </div>
+        <hr class="header-divider">
+        <div class="user">
+            <div id="mostrarNome"></div> 
+          </div>
+      </header>
+
+    <main>
+
+        
+            <div id="container">
+    
+                
+    
+      
+                    
+    
+                      <div class="form-container">
+                        <div class="login-header">
+                          <a href="telaPrincipal.html"><img src="https://cdn-icons-png.flaticon.com/128/271/271220.png" alt="" height="25px" /></a>
+                          <p class="title_login">Login do Funcionário</p>
+                        </div>
+
+                        
+        
+                       
+                        
+                        <form class="form" id="loginForm" onsubmit="event.preventDefault(); fazerLoginFuncionario()">
+                          <form class="form">
+                            <input type="text" class="input" id="nif" placeholder="N° NIF" maxlength="7" style="width: 350px;">
+                          <br>
+                          <div class="password-container">
+                            <label for="senha"></label>
+                            <input class="input" style="width: 350px;" type="password" id="senha" name="senha" placeholder="Senha" required><br><br>
+                            <input type="checkbox" id="showSenha">
+                            <label for="showSenha">Mostrar Senha</label><br><br>
+
+                          </div>
+
+                          <div class="password-container">
+                            <label for="senha"></label>
+                            <input class="input" style="width: 350px;" type="password" id="confirmar-senha-padrao" name="senha" placeholder="Senha" required><br><br>
+                            <input type="checkbox" id="showSenhaPadrao">
+                            <label for="showSenhaPadrao">Mostrar Senha Padrão</label><br><br>
+                        </div>
+
+        
+                            <button class="form-btn-Cad" style="width: 270px; margin-left: 40px; " id="botaoLogin">Entrar</button><br>
+
+                            <div id="alinhe" style="text-align: center;"><br>
+                              <h3 style="text-align: center;">Ainda não é cadastrado?</h3>
+                              <br>
+                              <a href="/cadastroFuncionario.html" style="color: aliceblue;" >Cadastre-se </a>
+                              
+                        </div>
+            </div>
+        
+
+       
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        
+
+    
+</body>
+</html>

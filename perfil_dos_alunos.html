@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil dos Alunos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       
+        .container {
+            max-width: 1200px; /* Aumentando a largura da caixa */
+            margin: 0 auto;
+        }
+        .input-group {
+            margin-bottom: 10px;
+            width: 45%;
+            padding-right: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 6px; /* Ajuste da altura */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 25%;
+            padding: 10px;
+            background-color: #a70f24;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #850f1a;
+        }
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .search-container .input-group {
+            width: 45%;
+            margin-bottom: 15px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px; /* Menor padding */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            width: 100%; /* Ajustando a largura */
+            max-width: 100%; /* Garantindo que a caixa ocupe toda a largura */
+            visibility: hidden; /* Inicialmente oculto */
+        }
+
+        .result p {
+            margin: 10px 0;
+        }
+
+        .result input {
+            width: calc(100% - 16px); /* Corrige a largura para acomodar o padding */
+            margin-bottom: 10px;
+        }
+
+        /* Estilos específicos para inputs nos resultados */
+        
+
+        .result .info-box label {
+            font-weight: bold;
+        }
+
+        .result .info-box input {
+            background-color: #eaeaea;
+            border: none;
+            font-size: 16px;
+            padding: 10px; /* Ajustando altura */
+            border-radius: 5px;
+            color: #333;
+        }
+
+        /* Media Queries para telas pequenas */
+        @media (max-width: 768px) {
+            .search-container .input-group {
+                width: 100%; /* Campos ocupam toda a largura em telas pequenas */
+                margin-bottom: 10px;
+            }
+            .search-container {
+                flex-direction: column;
+            }
+        }
+
+        /* Outros estilos do header e dropdown */
+        .header-container {
+            display: flex;
+            align-items: center;
+          }
+        
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .dropdown-menu {
+            display: none; /* Oculto por padrão */
+            position: absolute;
+            background-color: white;
+            color: #a70f24;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            margin-top: 10px;
+          }
+        
+          .dropdown-menu a {
+            color: #a70f24;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: large;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+          }
+        
+          .dropdown-menu a:hover {
+            background-color: #a70f24;
+            color: white;
+          }
+          /* Estilos para os links do header */
+          header a {
+        text-decoration: none;
+        color: aliceblue;
+        font-size: x-large;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px; /* Adiciona um pequeno padding para melhorar o visual */
+    }
+    
+    header a::after {
+        content: "";
+        position: absolute;
+        width: 100%; /* Garante que a linha ocupe toda a largura do link */
+        height: 3px; /* Espessura da linha */
+        background-color: white;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+    
+    header a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+            header a:hover {
+            color: white; 
+            text-decoration: none;
+    }
+    
+    .dropdown-perfil {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-menu-perfil {
+      display: none; /* Oculto por padrão */
+      position: absolute;
+      background-color: white;
+      color: #a70f24;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+    
+    .dropdown-menu-perfil a {
+      color: #a70f24;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .dropdown-menu-perfil a:hover {
+      background-color: #a70f24;
+      color: white;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #a70f24;
+        height: 50px;
+        display: flex-direction row;
+        flex-direction: row;
+      }
+    
+      .logo img {
+        width: 120px;
+      }
+    
+      .nav-links {
+        display: flex;
+            gap: 20px;
+            align-items: baseline;
+      }
+    
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        margin: 5px 0;
+        text-align: right;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+    
+      .nav-links a:hover {
+        background-color: white ;
+        color: #a70f24;
+      }
+    
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+    
+      .hamburger span {
+        height: 3px;
+        width: 25px;
+        background-color: aliceblue;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+    
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+    
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100px;
+          right: 0;
+          background-color: #a70f24;
+          width: 100%;
+          padding: 10px;
+          z-index: 1050;
+        }
+    
+        .nav-links.menu-active {
+          display: flex;
+          align-items: flex-start;
+        }
+
+         /* Estilo padrão (desktop) */
+  @media (min-width: 768px) {
+    .dropdown-menu a {
+      color: #a70f24 !important; /* Vermelho no desktop */
+    }
+  }
+
+  /* Estilo para mobile */
+  @media (max-width: 768px) {
+    .dropdown-menu a {
+      color: white !important; /* Branco no mobile */
+    }
+  }
+    
+        .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 10px;
+      background-color: #a70f24 !important; /* Garantir que a cor de fundo seja aplicada */
+      color: white !important; /* Garantir que a cor do texto seja aplicada */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+    }
+    
+    .dropdown-menu.show {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .dropdown-perfil {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu-perfil {
+    display: none; /* Oculto por padrão */
+    position: absolute;
+    background-color: white;
+    color: #a70f24;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+  }
+  
+  .dropdown-menu-perfil a {
+    color: #a70f24;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .dropdown-menu-perfil a:hover {
+    background-color: #a70f24;
+    color: white;
+  }
+    
+    </style>
+</head>
+<body>
+    
+
+    <header>
+        <div class="header-container">
+            <a href="homeFuncionario.html" class="home-icon">
+              <img src="imagens/home.png" alt="Página Inicial">
+            </a>
+            <div class="nav-links">
+              <a href="ver_cardapio_Funcionario.html">Cardápio</a>
+              <a href="pagamento-funcionario.html">Pagar</a>
+              <a href="https://www.canva.com/design/...">Menu</a>
+              <a href="avaliacaoFuncionario.html">Avaliação</a>
+      
+      
+              <div class="dropdown-perfil">
+                <a href="perfil-Funcionario.html" style="text-decoration: none;" class="dropdown-toggle-perfil">
+                  Perfil 
+                </a>
+                <div class="dropdown-menu-perfil">
+                  <a href="perfil-Funcionario.html">Perfil</a>
+                  <a href="perfil_dos_alunos.html">Perfil dos Alunos</a>
+                </div>
+              </div>
+      
+      
+              <div class="dropdown">
+                <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+                  Reserva 
+                </a>
+                <div class="dropdown-menu">
+                  <a href="reservas_Funcionario.html" style="color: #a70f24; " >Reservar</a>
+                  <br>
+                  <br>
+                  <a href="suas-reservas-funcionario.html"style="color: #a70f24;">Histórico </a>
+                </div>
+              </div>
+            </div>
+            <div class="logo">
+              <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+            </div>
+            <div class="hamburger" id="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+    </header>
+
+
+    <h1 style="text-align: center; margin: 20px;">Busca por Cadastros</h1><br><br>
+    <div class="container">
+        <div class="search-container">
+            <div class="input-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" placeholder="Pesquisar por nome completo">
+            </div>
+            <div class="input-group">
+                <label for="matricula">Número da Matrícula</label>
+                <input type="text" id="matricula" placeholder="Pesquisar por matrícula">
+            </div>
+            <div class="input-group">
+                <label for="nif">Número do NIF</label>
+                <input type="text" id="nif" placeholder="Pesquisar por NIF">
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Pesquisar por e-mail">
+            </div>
+        </div>
+        <button onclick="pesquisar()">Pesquisar</button>
+        <div id="resultado" class="result"></div>
+    </div>
+
+    <script>
+        let pessoas = [];
+        let pessoaFuncionario = [];
+        async function carregarDados() {
+            try {
+                const responsePessoas = await fetch('http://localhost:3000/pessoas');
+                pessoas = await responsePessoas.json();
+                const responseFuncionario = await fetch('http://localhost:3000/pessoaFuncionario');
+                pessoaFuncionario = await responseFuncionario.json();
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+            }
+        }
+        window.onload = carregarDados;
+
+        function pesquisar() {
+            const nome = document.getElementById("nome").value.toLowerCase();
+            const matricula = document.getElementById("matricula").value.toLowerCase();
+            const nif = document.getElementById("nif").value.toLowerCase();
+            const email = document.getElementById("email").value.toLowerCase();
+            const todosDados = [...pessoas, ...pessoaFuncionario];
+            const resultado = todosDados.filter(dado => {
+                const nomeCompleto = ((dado.nome || '') + " " + (dado.sobrenome || '')).toLowerCase();
+                return (
+                    (nome && nomeCompleto.includes(nome)) ||
+                    (matricula && (dado.matricula || '').toLowerCase().includes(matricula)) ||
+                    (nif && (dado.nif || '').toLowerCase().includes(nif)) ||
+                    (email && (dado.email || '').toLowerCase().includes(email))
+                );
+            });
+            mostrarResultado(resultado);
+        }
+
+        function mostrarResultado(resultado) {
+            const divResultado = document.getElementById("resultado");
+            divResultado.innerHTML = "";
+            divResultado.style.visibility = 'visible'; // Exibe a caixa de resultados
+            if (resultado.length === 0) {
+                divResultado.innerHTML = "<p>Nenhum resultado encontrado.</p>";
+            } else {
+                resultado.forEach(dado => {
+                    divResultado.innerHTML += ` 
+                        <div class="info-box">
+                            <label>Nome:</label>
+                            <input type="text" value="${dado.nome} ${dado.sobrenome}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>Matricula:</label>
+                            <input type="text" value="${dado.matricula || 'Não disponível'}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>NIF:</label>
+                            <input type="text" value="${dado.nif || 'Não disponível'}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>Email:</label>
+                            <input type="text" value="${dado.email}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>Telefone:</label>
+                            <input type="text" value="${dado.telefone}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>CPF:</label>
+                            <input type="text" value="${dado.cpf}" readonly>
+                        </div>
+                        <div class="info-box">
+                            <label>Senha:</label>
+                            <input type="text" value="${dado.senha || 'Não disponível'}" readonly>
+                        </div>  
+                    `;
+                });
+            }
+        }
+
+    // Dropdown funcionalidade
+    document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.dropdown');
+        if (!dropdown.contains(event.target)) {
+            document.querySelector('.dropdown-menu').style.display = 'none';
+        }
+    });
+
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("menu-active");
+    });
+
+    // Funcionalidade de dropdown no celular
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    document.querySelector('.dropdown-toggle-perfil').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const dropdownMenu = document.querySelector('.dropdown-menu-perfil');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+
+    document.querySelector('.dropdown-toggle-perfil').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const dropdownMenu = document.querySelector('.dropdown-menu-perfil');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.dropdown-perfil');
+        if (!dropdown.contains(event.target)) {
+            document.querySelector('.dropdown-menu-perfil').style.display = 'none';
+        }
+    });
+</script>
+
+
+    
+
+    
+    
+</body>
+</html>

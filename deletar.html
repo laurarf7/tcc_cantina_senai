@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Cardápio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="tcc.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <a href="" class="home-icon">
+            <img src="imagens/do-utilizador.png" alt="Página Inicial">
+          </a>
+          <div class="user">
+            <div id="mostrarNome"></div> 
+          </div>
+
+          <a href=""></a>
+
+          <div class="logo">
+            <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+          </div>
+        </div>
+        <hr class="header-divider">
+        <div class="user">
+            <div id="mostrarNome"></div> 
+          </div>
+      </header>
+
+      <div class="menuEditar">
+
+        <a href="deletar.html" style="text-decoration: none; font-size: x-large; color: #000;">Excluir Cardápio</a>
+        <hr><br><br>
+          <!-- <input class="inputEditarCardapio" type="text" id="id_busca" placeholder="Insira o ID"> -->
+          <input class="input" type="text" id="data_busca" placeholder=" Ex. 28/09/24">
+                  
+                  <!-- <button class="botaoEditar" onclick="buscarId()">Buscar pelo ID</button> -->
+
+                  <button class="botaoEditar" onclick=" buscarPorData()">Buscar pela Data</button>
+
+                 
+                  
+                  <div id="mostrarCardapio"></div>
+  
+  
+                  <button onclick="deletar()">Deletar Atestado</button> 
+                  <div id="mostra_dados"></div>
+     
+
+
+      </div>
+      
+  
+      </main>
+  
+      
+  
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+    
+</body>
+</html>

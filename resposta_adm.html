@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responder Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #a70f24;
+        height: 50px;
+        display: flex-direction row;
+        flex-direction: row;
+      }
+    
+      .logo img {
+        width: 120px;
+      }
+    
+      .nav-links {
+        display: flex;
+            gap: 20px;
+            align-items: baseline;
+      }
+    
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        margin: 5px 0;
+        text-align: right;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+    
+      .nav-links a:hover {
+        background-color: white ;
+        color: #a70f24;
+      }
+    
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+    
+      .hamburger span {
+        height: 3px;
+        width: 25px;
+        background-color: aliceblue;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+    
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+    
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100px;
+          right: 0;
+          background-color: #a70f24;
+          width: 100%;
+          padding: 10px;
+          z-index: 1050;
+        }
+    
+        .nav-links.menu-active {
+          display: flex;
+          align-items: flex-start;
+        }
+
+         /* Estilo padrão (desktop) */
+  @media (min-width: 768px) {
+    .dropdown-menu a {
+      color: #a70f24 !important; /* Vermelho no desktop */
+    }
+  }
+
+  /* Estilo para mobile */
+  @media (max-width: 768px) {
+    .dropdown-menu a {
+      color: white !important; /* Branco no mobile */
+    }
+  }
+    
+        .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 10px;
+      background-color: #a70f24 !important; /* Garantir que a cor de fundo seja aplicada */
+      color: white !important; /* Garantir que a cor do texto seja aplicada */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+    }
+    
+    .dropdown-menu.show {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .dropdown-perfil {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu-perfil {
+    display: none; /* Oculto por padrão */
+    position: absolute;
+    background-color: white;
+    color: #a70f24;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+  }
+  
+  .dropdown-menu-perfil a {
+    color: #a70f24;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .dropdown-menu-perfil a:hover {
+    background-color: #a70f24;
+    color: white;
+  }
+
+.delete-icon {
+  position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background-color: rgb(211, 207, 207);
+          color: rgb(255, 255, 255);
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 18px;
+}
+
+         .feedback-post {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%; /* Para garantir que ocupe o espaço disponível em telas pequenas */
+    max-width: 350px; /* Limita a largura máxima para 350px em telas grandes */
+    height: 100%; /* Ajusta a altura automaticamente para o conteúdo */
+    max-height: 300px; /* Limita a altura máxima para 350px em telas grandes */
+    margin: 20px auto; /* Centraliza o bloco */
+}
+
+@media screen and (min-width: 768px) {
+    .feedback-post {
+        width: 350px; /* Define largura fixa em telas grandes */
+        height: 350px; /* Define altura fixa em telas grandes */
+    }
+}
+
+.inputFeedBackADM{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.botaoFeedBackADM{
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.botaoFeedBackADM:hover {
+    background-color: #e9dfe1;
+    color:  #c5152c;
+    transform: scale(1.05);
+}
+.RespostaFB_ADM{
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: large;
+}
+
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+      
+        .dropdown-menu {
+          display: none; /* Oculto por padrão */
+          position: absolute;
+          background-color: white;
+          color: #a70f24;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          margin-top: 10px;
+        }
+      
+        .dropdown-menu a {
+          color: #a70f24;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          font-size: large;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+      
+        .dropdown-menu a:hover {
+          background-color: #a70f24;
+          color: white;
+        }
+        /* Estilos para os links do header */
+        header a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: x-large;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px; /* Adiciona um pequeno padding para melhorar o visual */
+}
+
+header a::after {
+    content: "";
+    position: absolute;
+    width: 100%; /* Garante que a linha ocupe toda a largura do link */
+    height: 3px; /* Espessura da linha */
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+header a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+        header a:hover {
+        color: white; 
+        text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="homeADM.html" class="home-icon">
+        <img src="imagens/home.png" alt="Página Inicial">
+      </a>
+      <div class="nav-links">
+        <div class="dropdown-perfil">
+          <a href="salvarCardapio.html" style="text-decoration: none;" class="dropdown-toggle-perfil">
+            Cardápio 
+          </a>
+          <div class="dropdown-menu-perfil">
+            <a href="salvarCardapio.html">Registrar Cardápio</a>
+            <a href="editarCardapio.html">Editar</a>
+          </div>
+        </div>
+        
+        <a href="resposta_adm.html">Ver Avaliação</a>
+        <a href="pagamento-adm.html">Pagamento</a>
+        <a href="imagens/Cardápio para menu de hambúrguer topográfico preto amarelo escuro e branco.pdf">Menu</a>
+        
+
+
+       
+
+
+        <div class="dropdown">
+          <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+            Reserva 
+          </a>
+          <div class="dropdown-menu">
+            <a href="admin.html" style="color: #a70f24; " >Cadastro</a>
+            <br>
+            <br>
+            <a href="reservas-admin.html"style="color: #a70f24;">Reservas </a>
+          </div>
+        </div>
+      </div>
+      <div class="logo">
+        <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    </header>
+    <br><br>
+    <h1 style="text-align: center;">Respostas do Administrador</h1><br><br>
+    
+    <div id="feedbackContainer"></div>
+
+    <script>
+
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("menu-active");
+    });
+
+    // Funcionalidade de dropdown no celular
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', (event) => {
+      const dropdown = document.querySelector('.dropdown');
+      if (!dropdown.contains(event.target)) {
+        dropdownMenu.classList.remove('show');
+      }
+    }); 
+
+
+    document.querySelector('.dropdown-toggle-perfil').addEventListener('click', function(event) {
+      event.preventDefault(); // Evita o redirecionamento
+      const dropdownMenu = document.querySelector('.dropdown-menu-perfil');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Fecha o menu se o usuário clicar fora
+    window.addEventListener('click', function(event) {
+      const dropdown = document.querySelector('.dropdown-perfil');
+      if (!dropdown.contains(event.target)) {
+        document.querySelector('.dropdown-menu-perfil').style.display = 'none';
+      }
+    });
+
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        const dropdownMenu = this.nextElementSibling;
+        const isVisible = dropdownMenu.style.display === 'block';
+        
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+
+        dropdownMenu.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+
+    // Fecha todos os menus dropdown ao clicar fora
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+     
+    document.addEventListener('DOMContentLoaded', () => {
+    const feedbackContainer = document.getElementById('feedbackContainer');
+    const feedbackPosts = JSON.parse(localStorage.getItem('feedbackPosts')) || [];
+
+    // Função para renderizar feedbacks e respostas
+    const renderFeedbacks = () => {
+        feedbackContainer.innerHTML = '';
+        feedbackPosts.forEach((post, index) => {
+            const postDiv = document.createElement('div');
+            postDiv.classList.add('feedback-post');
+
+            postDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>${post.nome} ${post.sobrenome} (Matrícula: ${post.matricula})</h3>
+                    <div class="delete-icon" style="cursor: pointer; font-size: 20px; color: #c5152c;">&#x1F5D1;</div>
+                </div>
+                <p style="font-size: large">Comentário: ${post.feedback}</p>
+                <div class="rating">
+                    ${'★'.repeat(post.rating)}${'☆'.repeat(5 - post.rating)}
+                </div>
+            `;
+
+            // Adicionar resposta do administrador, se houver
+            if (post.response) {
+                const responseDiv = document.createElement('div');
+                responseDiv.classList.add('response');
+                responseDiv.innerHTML = `<div class="RespostaFB_ADM">Resposta do Administrador:</div><br> ${post.response}`;
+                postDiv.appendChild(responseDiv);
+            }
+
+            // Formulário para resposta do administrador
+            const responseForm = document.createElement('form');
+            responseForm.classList.add('response-form');
+            responseForm.innerHTML = `
+                <br><input type="text" class="inputFeedBackADM" placeholder="Digite sua resposta..." required />
+                <button type="submit" class="botaoFeedBackADM">Responder</button>
+            `;
+            responseForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const responseInput = responseForm.querySelector('input').value;
+                post.response = responseInput;
+                feedbackPosts[index] = post;
+                localStorage.setItem('feedbackPosts', JSON.stringify(feedbackPosts));
+                renderFeedbacks();
+            });
+
+            postDiv.appendChild(responseForm);
+
+            // Ação de excluir o comentário
+            const deleteIcon = postDiv.querySelector('.delete-icon');
+            deleteIcon.addEventListener('click', () => {
+                Swal.fire({
+                    title: "Deseja excluir este comentário?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#286613",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sim, Apagar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        feedbackPosts.splice(index, 1); // Remove o comentário do array
+                        localStorage.setItem('feedbackPosts', JSON.stringify(feedbackPosts)); // Atualiza no localStorage
+                        renderFeedbacks(); // Re-renderiza os comentários
+                        Swal.fire({
+                            title: "Deletado!",
+                            text: "O comentário foi apagado.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
+
+            feedbackContainer.appendChild(postDiv);
+        });
+    };
+
+    renderFeedbacks();
+});
+
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
+</html>
+

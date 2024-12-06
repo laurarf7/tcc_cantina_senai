@@ -1,0 +1,1052 @@
+* {
+    margin: 0;
+}
+
+/********************************HEADER******************************************/
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: row;
+    
+}
+
+.header-container img {
+    height: 40px; 
+} 
+
+ header {
+    background-color: #a70f24; 
+    color: white;
+    padding: 10px;
+    position: relative;
+    height: 80px;
+} 
+
+/**************Linha do Header*/
+ 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .header-container {
+    display: flex    ;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #a70f24;
+        height: 50px;
+        display: flex-direction row;
+        flex-direction: row;
+        align-content: flex-end;
+        align-items: flex-start;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin: 5px 0;
+    text-align: right;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background-color: white;
+    color: #a70f24;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: aliceblue;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100px;
+      right: 0;
+      background-color: #a70f24;
+      width: 100%;
+      padding: 10px;
+      z-index: 1050;
+    }
+
+    .nav-links.menu-active {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 10px;
+      background-color: #a70f24 !important;
+      color: white !important;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1050;
+    }
+
+    .dropdown-menu.show {
+    display: flex ;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: flex-end;
+    }
+
+    /* Estilo para o celular */
+    .dropdown-menu a {
+      color: white !important; /* Cor branca para celular */
+    }
+  }
+
+  @media (min-width: 769px) {
+    /* Estilo para o desktop */
+    .dropdown-menu a {
+      color: #a70f24 !important; /* Cor vermelha para desktop */
+    }
+  }
+
+/*****************************Modelo Pronto de LOGIN***************************************************/
+/* From Uiverse.io by akshat-patel28 */ 
+.form-container {
+    width: 450px;
+    height: 620px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    margin-top: 120px;
+}
+
+.form-container-reserva{
+    width: 1650px;
+    height: 800px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px 30px 50px;
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    margin-top: 120px;
+}
+
+.title {
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    margin: 10px 0 30px 0;
+    font-size: 28px;
+    font-weight: 800;
+}
+.login-header {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    gap: 80px; /* Espaçamento entre a seta e o título */
+}
+
+.title_login {
+    color: black;
+    margin: 0;
+    text-align: center;
+    font-size: 28px; /* Ajuste o tamanho da fonte se necessário */
+}
+
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 15px;
+}
+
+.input {
+    border-radius: 20px;
+    border: 1px solid #c0c0c0;
+    outline: 0 !important;
+    box-sizing: border-box;
+    padding: 12px 15px;
+}
+
+.page-link {
+    text-decoration: underline;
+    margin: 0;
+    text-align: center;
+    color: #f8f7f7;
+    text-decoration-color: #f8f7f7;
+}
+
+.page-link-label {
+    cursor: pointer;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.page-link-label:hover {
+    color: #000;
+}
+
+.form-btn {
+    padding: 10px 15px;
+    background-color: #c5152c;
+    border-radius: 18px;
+    border: none; /* border: 0 !important;*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white; /* Adiciona cor ao texto, se necessário */
+    cursor: pointer; /* Adiciona um cursor de ponteiro para indicar que é clicável */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-btn:hover {
+    background-color: #f1ebed;
+    color: #c5152c;
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+
+.form-btn-Cad{
+    padding: 10px 15px;
+    background-color: #eee8e9;
+    border-radius: 18px;
+    border: none; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #c5152c;;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.form-btn-Cad:hover {
+    background-color: #c5152c;
+    color: #f3e9ea;
+    transform: scale(1.05);/* Aumenta ligeiramente o botão ao passar o mouse */
+    
+}
+
+.form-btn:active {
+    box-shadow: none;
+}
+
+
+
+
+.sign-up-label {
+    margin: 0;
+    font-size: 10px;
+    color: #747474;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.sign-up-link {
+    margin-left: 1px;
+    font-size: 11px;
+    text-decoration: underline;
+    text-decoration-color: teal;
+    color: teal;
+    cursor: pointer;
+    font-weight: 800;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.apple-login-button, .google-login-button {
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    gap: 5px;
+}
+
+.apple-login-button {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+.google-login-button {
+    border: 2px solid #747474;
+}
+
+.apple-icon, .google-icon {
+    font-size: 18px;
+    margin-bottom: 1px;
+}
+
+/******************************Não Cadastrado*****************************************/
+
+#alinhe a {
+    text-decoration: none; 
+    color: crimson; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#alinhe a:hover {
+    text-decoration: underline; 
+}
+
+
+/***********************************Pagina SALVAR Cardapio***************************************************/
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.dia {
+    flex: 1 1 30%;
+    background-color: #f7f7f7;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.dia h3 {
+    background-color: #b71c1c;
+    color: #fff;
+    padding: 10px;
+    margin: -20px -20px 20px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.dia ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dia ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.dia ul li:last-child {
+    border-bottom: none;
+}
+
+.botao-editar {
+    padding: 7px;
+    width: 55%;
+    height: 26%;
+    background-color: #c5152c;
+    text-decoration: none;
+    border: none; /* Remove qualquer borda padrão */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white; /* Adiciona cor ao texto, se necessário */
+    cursor: pointer; /* Adiciona um cursor de ponteiro para indicar que é clicável */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.botao-editar:hover {
+    background-color: #f1ebed;
+    color: #c5152c;
+    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.inputCardapio{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.inputEditarCardapio {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+/*********************************EDITAR************************************************/
+
+.menuEditar {
+    width: 100%;  /* Faz com que a largura da caixa ocupe 100% do espaço disponível */
+    max-width: 850px; /* Limita a largura máxima a 850px em telas grandes */
+    height: auto; /* A altura será ajustada automaticamente conforme o conteúdo */
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin: 0 auto;
+    margin-top: 120px; /* Mantém o espaçamento superior */
+    text-align: left; /* Ajusta a formatação do texto */
+    overflow: hidden; /* Garante que não haja barras de rolagem inesperadas */
+}
+
+/* Responsividade para telas menores (dispositivos móveis) */
+@media (max-width: 768px) {
+    .menuEditar {
+        margin-top: 50px; /* Reduz o espaçamento superior em dispositivos móveis */
+        padding: 15px; /* Ajusta o padding em telas menores */
+    }
+
+    /* Ajuste no campo de input e botão para telas pequenas */
+    .inputVerCardapio, .botaoEditar {
+        width: 100%; /* Faz o input e o botão ocuparem toda a largura disponível */
+        margin-left: 0;  /* Remove a margem à esquerda */
+        margin-bottom: 10px; /* Adiciona margem inferior entre os elementos */
+    }
+
+    h2 {
+        font-size: 18px; /* Ajusta o tamanho do título em dispositivos menores */
+    }
+}
+
+
+
+/* .menuEditar{
+    width: 850px;
+    height: 1050px;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin: 0 auto;
+    margin-top: 120px;
+    /*text-align: center;
+
+} */
+
+
+
+.botaoEditar{
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.botaoEditar:hover {
+    background-color: #b31126;
+    transform: scale(1.05);
+}
+/*******************************Responsivo****************************************/
+
+/*******************************CONTAINER**********************************************/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+/*********************************************************************************/
+
+@media (max-width: 1200px) {
+    .header-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-container img {
+        height: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        height: auto; /* Ajusta a altura para ser dinâmica */
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .input, .form-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .input, .form-btn {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .header-container img {
+        height: 25px;
+    }
+}
+
+/****************************************************/
+/* From Uiverse.io by ammarsaa */ 
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #a70f24;
+    color: #fff;
+    margin-top: 50px;
+    
+    
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    color: #f7f8f8;
+  }
+  
+  .message, 
+  .signin {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .signin {
+    text-align: center;
+  }
+  
+  .signin a:hover {
+    text-decoration: underline royalblue;
+  }
+  
+  .signin a {
+    color: #00bfff;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    background-color: #f0eeee;
+    color: #0f0f0f;
+    width: 100%;
+    padding: 20px 05px 05px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    color: rgb(2, 2, 2);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 12.5px;
+    font-size: 0.9em;
+  }
+  
+  .form label .input:focus + span,
+  .form label .input:valid + span {
+    color: rgba(231, 15, 15);
+    top: 0px;
+    font-size: 1em;
+    
+  }
+  
+  .input {
+    font-size: medium;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    background-color: #00bfff;
+  }
+  
+  .submit:hover {
+    background-color: #00bfff96;
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  .mostrarSenha{
+    margin-left: 10px;
+  }
+  /***************************************************************************/
+
+/********************FEEDBACK*********************************/
+/* Estilo do contêiner geral */
+.container2 {
+    width: 100%; /* 100% de largura disponível */
+    max-width: 900px; /* Limita a largura máxima */
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Espaço para evitar sobreposição com o cabeçalho fixo */
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.titulo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #333;
+}
+
+/* Estilo do formulário de feedback */
+.feedback-form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.feedback-form h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+.feedback-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Inclui o padding e a borda no tamanho total */
+}
+
+.rating {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: left;
+
+}
+
+.star {
+    font-size: 2em;
+    color: #ddd; /* Cor das estrelas não selecionadas */
+    cursor: pointer;
+}
+
+.star.selected {
+    color: #f0c30f; /* Cor das estrelas selecionadas */
+}
+
+.feedback-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #a70f24; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    background-color: #b31126;
+}
+
+/* Estilo da lista de comentários */
+.feedback-list {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.feedback-list h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+.feedback-post {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding e borda no cálculo do tamanho */
+}
+
+.feedback-post h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.feedback-post p {
+    margin: 0;
+    color: #666;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    .container2 {
+        padding: 10px; /* Diminui o padding em telas pequenas */
+    }
+
+    .titulo h1 {
+        font-size: 2em; /* Reduz o tamanho da fonte */
+    }
+
+    .feedback-form input[type="text"] {
+        font-size: 0.9em; /* Ajusta o tamanho da fonte do input */
+        padding: 8px;
+    }
+
+    .rating .star {
+        font-size: 1.5em; /* Ajusta o tamanho das estrelas para telas pequenas */
+    }
+
+    .feedback-form button {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+
+    .feedback-list h2 {
+        font-size: 1.3em;
+    }
+
+    .feedback-post {
+        font-size: 0.9em; /* Diminui o tamanho da fonte nos comentários */
+    }
+}
+
+/* Estilos para telas menores */
+@media (max-width: 480px) {
+    .container2 {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .titulo h1 {
+        font-size: 1.8em;
+    }
+
+    .feedback-form input[type="text"] {
+        font-size: 0.8em;
+        padding: 6px;
+    }
+
+    .rating .star {
+        font-size: 1.3em; /* Ajusta para tamanho adequado em smartphones */
+    }
+
+    .feedback-form button {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+
+    .feedback-list h2 {
+        font-size: 1.2em;
+    }
+
+    .feedback-post {
+        font-size: 0.9em;
+    }
+}
+
+
+/* input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+} */
+
+.inputVerCardapio{
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+}
+.icon-container {
+    text-align: right; /* Alinha o ícone à direita */
+    margin-top: 10px; /* Espaço acima do ícone */
+}
+.feedback-icon {
+    width: 30px; /* Ajuste o tamanho do ícone */
+    height: 30px; /* Ajuste o tamanho do ícone */
+}
+/* BOTAO */
+
+
+/*****************************         RESERVAR         ******************************************/
+.BOTAO-RESERVAR{
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+
+}
+.BOTAO-RESERVAR:hover {
+background-color: #b31126;
+transform: scale(1.05);
+}
+
+.caixa-reserva{
+    width: 250px;
+    height: 250px;
+    background-color: #c3bdbd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+   
+    
+}
+.caixas{
+    display: flex;
+}
+
+.Produto-Reserva{
+    font-size: larger;
+}
+
+.Quantidade-Reserva{
+    font-size: larger;
+}
+
+.Input-Reserva-ADM{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.Input-qtd-reserva-adm{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.botao-reserva-adm{
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 300px;
+    
+
+}
+.botao-reserva-adm:hover {
+    background-color: #b31126;
+    transform: scale(1.05);
+}
+
+
+/*******************BOTAO HOME*********************/
+.Botao-Home {
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block; /* Para que o botão tenha o tamanho natural do conteúdo */
+    text-decoration: none;
+}
+
+.Botao-Home:hover {
+    background-color: #b31126;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .Botao-Home {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+.card{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.card-body {
+    display: flex; /* Usa flexbox para o layout */
+    flex-direction: column; /* Alinha os itens na direção da coluna */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    height: 80px 90px; /* Define uma altura mínima para garantir que o conteúdo seja centralizado */
+    
+}
+
+
+
+/* .Botao-Home{
+    background-color: #c5152c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 130px;
+    
+} */
+
+/* .Botao-Home:hover{
+    background-color: #b31126;
+    transform: scale(1.05);
+} */

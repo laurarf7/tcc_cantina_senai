@@ -1,0 +1,232 @@
+{
+  "pessoas": [
+    {
+      "id": "1",
+      "nome": "",
+      "sobrenome": "",
+      "telefone": "",
+      "email": "",
+      "cpf": "",
+      "matricula": "",
+      "senha": "",
+      "confsenha": ""
+    },
+    {
+      "id": "899a",
+      "nome": "Laís",
+      "sobrenome": "Miranda",
+      "telefone": "(11) 98762-5532",
+      "email": "lais00@gmail.com",
+      "cpf": "676.293.293-20",
+      "matricula": "55443322",
+      "senha": "000"
+    },
+    {
+      "id": "02b2",
+      "nome": "Camila",
+      "sobrenome": "Santana",
+      "telefone": "(11) 96558-7554",
+      "email": "cams@gmail.com",
+      "cpf": "778.552.299-87",
+      "matricula": "23186470",
+      "senha": "cams123"
+    },
+    {
+      "id": "1f68",
+      "nome": "Camila",
+      "sobrenome": "Santana",
+      "telefone": "(11) 98874-5336",
+      "email": "camila@gmail.com",
+      "cpf": "445.633.125-55",
+      "matricula": "23186470",
+      "senha": "camila123"
+    },
+    {
+      "id": "0843",
+      "nome": "Ana",
+      "sobrenome": "Caroline",
+      "telefone": "(11) 99658-7122",
+      "email": "ana@gmail.com",
+      "cpf": "896.354.441-25",
+      "matricula": "23186470",
+      "senha": "ana123"
+    }
+  ],
+  "pessoaFuncionario": [
+    {
+      "id": "973a"
+    },
+    {
+      "id": "18ea",
+      "nome": "Afonso",
+      "sobrenome": "Cardoso",
+      "telefone": "(11) 92934-3434",
+      "email": "afonsoCardoso@gmail.com",
+      "cpf": "434.773.872-55",
+      "nif": "8800777",
+      "senha": "af"
+    },
+    {
+      "id": "95c9",
+      "nome": "carol",
+      "sobrenome": "marques",
+      "telefone": "(11) 93482-9479",
+      "email": "carol@gmail.com",
+      "cpf": "999.999.999-99",
+      "nif": "9999999",
+      "senha": "99"
+    },
+    {
+      "id": "abf0",
+      "nome": "bianca",
+      "sobrenome": "almeida",
+      "telefone": "(11) 00000-0000",
+      "email": "bianca@gmail.com",
+      "cpf": "777.777.777-77",
+      "nif": "7777777",
+      "senha": "77"
+    },
+    {
+      "id": "10c7",
+      "nome": "",
+      "sobrenome": "",
+      "telefone": "",
+      "email": "",
+      "cpf": "",
+      "nif": "",
+      "senha": ""
+    },
+    {
+      "id": "7b6e",
+      "nome": "bianca",
+      "sobrenome": "almeida",
+      "telefone": "(11) 03029-0392",
+      "email": "balmeida@gmail.com",
+      "cpf": "888.888.888-88",
+      "nif": "8888888",
+      "senha": "88"
+    },
+    {
+      "id": "ff54",
+      "nome": "Flavia",
+      "sobrenome": "Ruiz",
+      "telefone": "(11) 99090-9090",
+      "email": "flavia@gmail.com",
+      "cpf": "902.020.202-00",
+      "nif": "1223344",
+      "senha": "11"
+    },
+    {
+      "id": "f3a8",
+      "nome": "Mileide",
+      "sobrenome": "Ruiz",
+      "telefone": "(11) 96633-2587",
+      "email": "mileide@gmail.com",
+      "cpf": "445.566.987-77",
+      "nif": "7318329",
+      "senha": "mileide@123"
+    },
+    {
+      "id": "ee75",
+      "nome": "Silas",
+      "sobrenome": "Bastianelli",
+      "telefone": "(11) 96471-2587",
+      "email": "silas@gmail.com",
+      "cpf": "122.235.554-44",
+      "nif": "8056317",
+      "senha": "silasB"
+    }
+  ],
+  "cardapio": [
+    {
+      "data": "27/08/24",
+      "comida1": "Arroz",
+      "comida2": "Feijão",
+      "comida3": "batata frita",
+      "comida4": "carne",
+      "comida5": "carneeeeeee",
+      "comida6": "ovo frito",
+      "comida7": "yyyyyyyyyyyyyyy",
+      "comida8": "batata palha",
+      "comida9": "strogonoff",
+      "comida10": "torresmo",
+      "bebida": "suco",
+      "sobremesa": "chocolate",
+      "id": "1"
+    },
+    {
+      "data": "25/11/24",
+      "comida1": "Arroz",
+      "comida2": "Feijão",
+      "comida3": "Macarrão",
+      "comida4": "Bife acebolado",
+      "comida5": "Frango Empanado",
+      "comida6": "Strogonoff de Carne",
+      "comida7": "Batata Frita",
+      "comida8": "Alface",
+      "comida9": "Tomate",
+      "comida10": "Cenoura",
+      "bebida": "Suco de Manga",
+      "sobremesa": "Gelatina de Uva",
+      "id": "ba9f"
+    },
+    {
+      "id": "eb43",
+      "data": "28/11/24",
+      "comida1": "arroz",
+      "comida2": "feijao",
+      "comida3": "macarrão",
+      "comida4": "carne",
+      "comida5": "peixe",
+      "comida6": "frango",
+      "comida7": "lasanha",
+      "comida8": "cenoura",
+      "comida9": "beterraba",
+      "comida10": "alface",
+      "bebida": "suco de morango",
+      "sobremesa": "gelatina de abacaxi"
+    },
+    {
+      "data": "03/12/24",
+      "comida1": "Arroz",
+      "comida2": "Feijão",
+      "comida3": "Macarrão",
+      "comida4": "Strogonoff de Frango",
+      "comida5": "Lasanha",
+      "comida6": "Batata Frita",
+      "comida7": "Frango Grelhado",
+      "comida8": "Alface",
+      "comida9": "Tomate",
+      "comida10": "Beterraba",
+      "bebida": "Suco de Morango",
+      "sobremesa": "Gelatina de Abacaxi",
+      "id": "15a1"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "c4b4"
+    },
+    {
+      "id": "003f",
+      "nome": "Coxinha de Frango",
+      "quantidade": 35,
+      "preco": "10.50"
+    }
+  ],
+  "reservas": [
+    {
+      "id": "b985",
+      "produtoId": "003f",
+      "quantidade": 5,
+      "nomeUsuario": "Ana Caroline"
+    }
+  ],
+  "config": [
+    {
+      "qrCodeUrl": "URL_DA_IMAGEM",
+      "pixKey": "CHAVE_PIX",
+      "id": "eec5"
+    }
+  ]
+}

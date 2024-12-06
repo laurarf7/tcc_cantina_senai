@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Funcionario</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+      body {
+       
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+        
+        .header-container {
+          display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #a70f24;
+      height: 50px;
+      display: flex-direction row;
+      flex-direction: row;
+      align-items: flex-start;
+        }
+      
+        .logo img {
+          width: 120px;
+        }
+      
+        .nav-links {
+          display: flex;
+              gap: 20px;
+              align-items: baseline;
+        }
+      
+        .nav-links a {
+          text-decoration: none;
+          color: white;
+          font-size: 16px;
+          margin: 5px 0;
+          text-align: right;
+          padding: 5px 10px;
+          border-radius: 3px;
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+      
+        .nav-links a:hover {
+          background-color: white ;
+          color: #a70f24;
+        }
+      
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+        }
+      
+        .hamburger span {
+          height: 3px;
+          width: 25px;
+          background-color: aliceblue;
+          margin: 3px 0;
+          transition: 0.3s;
+        }
+      
+        @media (max-width: 768px) {
+          .hamburger {
+            display: flex;
+          }
+      
+          .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100px;
+            right: 0;
+            background-color: #a70f24;
+            width: 100%;
+            padding: 10px;
+            z-index: 1050;
+          }
+      
+          .nav-links.menu-active {
+            display: flex;
+            align-items: flex-start;
+          }
+  
+           /* Estilo padrão (desktop) */
+    @media (min-width: 768px) {
+      .dropdown-menu a {
+        color: #a70f24 !important; /* Vermelho no desktop */
+      }
+    }
+  
+    /* Estilo para mobile */
+    @media (max-width: 768px) {
+      .dropdown-menu a {
+        color: white !important; /* Branco no mobile */
+      }
+    }
+      
+          .dropdown-menu {
+        display: none;
+        flex-direction: column;
+        padding-left: 10px;
+        background-color: #a70f24 !important; /* Garantir que a cor de fundo seja aplicada */
+        color: white !important; /* Garantir que a cor do texto seja aplicada */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+      }
+      
+      .dropdown-menu.show {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: space-between;
+        align-items: flex-start;
+      }
+    }
+  
+    .dropdown-perfil {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-menu-perfil {
+      display: none; /* Oculto por padrão */
+      position: absolute;
+      background-color: white;
+      color: #a70f24;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-top: 10px;
+    }
+    
+    .dropdown-menu-perfil a {
+      color: #a70f24;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .dropdown-menu-perfil a:hover {
+      background-color: #a70f24;
+      color: white;
+    }
+    
+  
+
+/************************************/
+.form-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+}
+
+.form-container p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-container strong {
+  color: #a70f24;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+  
+        .container_Perfil_Aluno {
+        text-align: center;
+    }
+    
+    /* Estilo do círculo da foto */
+    .photo-circle {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #ccc; /* Cor cinza por padrão */
+        margin: 0 auto 10px;
+    }
+
+    .photo-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none; /* Esconde a imagem caso não tenha foto */
+    }
+
+    .camera-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        color: white;
+        display: block; /* Exibe o ícone de câmera quando não houver imagem */
+    }
+
+    /* Estilo do botão de upload da foto */
+    #uploadPhoto {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    /* Estilo do botão de lixeira */
+    .delete-btn {
+        display: none; /* Inicialmente escondido */
+        background: none;
+        border: none;
+        color: red;
+        font-size: 30px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .delete-btn:hover {
+        color: darkred;
+    }
+    </style>
+</head>
+
+<header>
+  <div class="header-container">
+    <a href="homeFuncionario.html" class="home-icon">
+      <img src="imagens/home.png" alt="Página Inicial">
+    </a>
+    <div class="nav-links">
+      <a href="ver_cardapio_Funcionario.html">Cardápio</a>
+      <a href="pagamento-funcionario.html">Pagar</a>
+      <a href="imagens/Cardápio para menu de hambúrguer topográfico preto amarelo escuro e branco.pdf">Menu</a>
+      <a href="avaliacaoFuncionario.html">Avaliação</a>
+
+
+      <div class="dropdown-perfil">
+        <a href="perfil-Funcionario.html" style="text-decoration: none;" class="dropdown-toggle-perfil">
+          Perfil 
+        </a>
+        <div class="dropdown-menu-perfil">
+          <a href="perfil-Funcionario.html">Perfil</a>
+          <a href="perfil_dos_alunos.html">Perfil dos Alunos</a>
+        </div>
+      </div>
+
+
+      <div class="dropdown">
+        <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+          Reserva 
+        </a>
+        <div class="dropdown-menu">
+          <a href="reservas_Funcionario.html" style="color: #a70f24; " >Reservar</a>
+          <br>
+          <br>
+          <a href="suas-reservas-funcionario.html"style="color: #a70f24;">Histórico </a>
+        </div>
+      </div>
+    </div>
+    <div class="logo">
+      <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  </header>
+<body>
+
+
+    <div class="container_Perfil_Aluno">
+    <h1 style="padding: 18px;">Bem-vindo, <span id="nomeUsuario"></span>!</h1> <br>
+    
+    <div class="user-photo">
+      <!-- Círculo da foto e ícone de câmera -->
+      <div id="photoCircle" class="photo-circle" onclick="document.getElementById('uploadPhoto').click();">
+          <img id="userPhoto" src="imagens/default-avatar.png" alt="Foto do Usuário">
+          <div id="cameraIcon" class="camera-icon">📷</div> <!-- Ícone de câmera -->
+          <br>
+      </div>
+      <!-- Botão de upload de foto, que será disparado ao clicar no círculo -->
+      <input type="file" id="uploadPhoto" accept="image/*" onchange="previewPhoto(event)" style="display: none;">
+      <button id="deletePhoto" class="delete-btn" onclick="deletePhoto()">🗑️</button> <!-- Ícone de lixeira -->
+  </div>
+  <br><br>
+  <p><strong>NIF:</strong> <span id="nifUsuario"></span></p> <br>
+  <p><strong>Email:</strong> <span id="emailUsuario"></span></p> <br>
+  <p><strong>Senha:</strong> <span id="senhaUsuario"></span></p> <br>
+  <p><strong>Senha Padrão:</strong> <span id="senhaUsuarioPadrao"></span></p>
+</div>
+      
+      <script>
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("menu-active");
+      });
+
+      // Funcionalidade de dropdown no celular
+      const dropdownToggle = document.querySelector('.dropdown-toggle');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+
+      dropdownToggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        dropdownMenu.classList.toggle('show');
+      });
+
+      // Fecha o menu se o usuário clicar fora
+      window.addEventListener('click', (event) => {
+        const dropdown = document.querySelector('.dropdown');
+        if (!dropdown.contains(event.target)) {
+          dropdownMenu.classList.remove('show');
+        }
+      }); 
+
+
+      document.querySelector('.dropdown-toggle-perfil').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita o redirecionamento
+        const dropdownMenu = document.querySelector('.dropdown-menu-perfil');
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+    
+      // Fecha o menu se o usuário clicar fora
+      window.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.dropdown-perfil');
+        if (!dropdown.contains(event.target)) {
+          document.querySelector('.dropdown-menu-perfil').style.display = 'none';
+        }
+      });
+
+
+        
+          // Recupera as informações do usuário logado do localStorage
+          const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+          
+          if (usuarioLogado) {
+              // Exibe as informações do usuário na página
+              document.getElementById('nomeUsuario').textContent = `${usuarioLogado.nome} ${usuarioLogado.sobrenome}`;
+              document.getElementById('nifUsuario').textContent = usuarioLogado.nif;
+              document.getElementById('emailUsuario').textContent = usuarioLogado.email;
+              document.getElementById('senhaUsuario').textContent = usuarioLogado.senha;
+      
+              // Exibe "Adm@Senai" como a Senha Padrão
+              document.getElementById('senhaUsuarioPadrao').textContent = "Funcionario@Sen4i_";
+        } else {
+            // Se não estiver logado, redireciona para a página de login
+            window.location.href = "loginFuncionario.html";
+        }
+
+        
+
+      window.onload = function() {
+        const savedPhoto = localStorage.getItem('userPhoto');
+        if (savedPhoto) {
+            const userPhoto = document.getElementById('userPhoto');
+            const cameraIcon = document.getElementById('cameraIcon');
+            const deleteBtn = document.getElementById('deletePhoto');
+            
+            // Exibe a imagem salva e esconde o ícone de câmera
+            userPhoto.src = savedPhoto;
+            userPhoto.style.display = 'block';
+            cameraIcon.style.display = 'none';
+            
+            // Exibe o botão de excluir foto
+            deleteBtn.style.display = 'inline-block';
+        }
+    };
+
+    // Função para pré-visualizar a foto do usuário e salvar no localStorage
+    function previewPhoto(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const userPhoto = document.getElementById('userPhoto');
+            const cameraIcon = document.getElementById('cameraIcon');
+            const deleteBtn = document.getElementById('deletePhoto');
+            
+            // Exibe a imagem e esconde o ícone de câmera
+            userPhoto.src = reader.result;
+            userPhoto.style.display = 'block';
+            cameraIcon.style.display = 'none';
+            
+            // Exibe o botão de excluir foto
+            deleteBtn.style.display = 'inline-block';
+
+            // Salva a foto no localStorage
+            localStorage.setItem('userPhoto', reader.result);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // Função para excluir a foto
+    function deletePhoto() {
+        const userPhoto = document.getElementById('userPhoto');
+        const cameraIcon = document.getElementById('cameraIcon');
+        const deleteBtn = document.getElementById('deletePhoto');
+        
+        // Reseta a foto para a imagem padrão
+        userPhoto.src = "imagens/default-avatar.png";
+        userPhoto.style.display = 'none';
+        
+        // Exibe o ícone de câmera e esconde o botão de excluir
+        cameraIcon.style.display = 'block';
+        deleteBtn.style.display = 'none';
+        
+        // Limpa o campo de upload
+        document.getElementById('uploadPhoto').value = "";
+
+        // Remove a foto do localStorage
+        localStorage.removeItem('userPhoto');
+    }
+</script>
+</body>
+</html>

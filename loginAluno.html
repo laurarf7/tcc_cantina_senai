@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Aluno</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="tcc.js"></script>
+
+    
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+          
+
+          <div class="logo">
+            <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+          </div>
+        </div><br>
+        <hr class="header-divider">
+        <div class="user">
+            <div id="mostrarNome"></div> 
+          </div>
+      </header>
+
+    <main>
+  
+ 
+            <div class="form-container">
+              <div class="login-header">
+                <a href="telaPrincipal.html"><img src="https://cdn-icons-png.flaticon.com/128/271/271220.png" alt="" height="25px" /></a>
+                <p class="title_login">Login do Aluno</p>
+            </div>
+            
+                
+                <form class="form" id="loginForm" onsubmit="event.preventDefault(); fazerLogin()">
+                  <form class="form">
+                    <input type="text" class="input" id="matricula" placeholder="N° Matrícula" style="width: 350px;">
+                  <br>
+                  <div class="password-container">
+                    <label for="senha"></label>
+                    <input class="input" style="width: 350px;" type="password" id="senha" name="senha" placeholder="Senha" required><br><br>
+                    <input type="checkbox" id="showSenha">
+                    <label for="showSenha">Mostrar Senha</label><br><br>
+
+                    <button class="form-btn-Cad" style="width: 270px; margin-left: 40px; " id="botaoLogin">Entrar</button>
+  
+                    
+                  <br>
+              </form>
+
+              <br>
+
+                <div id="alinhe" style="text-align: center;">
+                    <h3 style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Ainda não é cadastrado?</h3>
+                    <br>
+                    <a href="/cadastroAluno.html" style="color: aliceblue;">Cadastre-se </a>
+                    
+              </div>
+
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    
+    <style>
+        /* Resetando algumas margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+          
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            width: 30%;
+            transition: transform 0.3s;
+            text-decoration: none;
+            
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            
+
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+         
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+       
+        
+
+        /* Responsividade para telas médias */
+        @media (max-width: 1024px) {
+            .box {
+                width: 45%; /* As caixas ficam com 45% de largura */
+            }
+        }
+
+        /* Responsividade para telas pequenas (dispositivos móveis) */
+        @media (max-width: 768px) {
+            .box {
+                width: 100%; /* As caixas ficam com 100% de largura */
+                margin-bottom: 20px; /* Espaçamento entre as caixas */
+            }
+        }
+
+        /* Se a tela for muito pequena, como em smartphones com largura de 480px ou menos */
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column; 
+                align-items: center; 
+            }
+            .box {
+                width: 100%; /* Ocupa 100% da largura */
+                margin-bottom: 10px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+    <div class="box">
+        <a href="loginAluno.html">
+            <img src="imagens/icone_Aluno.png" alt="Imagem 1" class="image">
+            <p class="name">Aluno(a)</p>
+        </a>
+    </div>
+    <div class="box">
+        <a href="loginFuncionario.html" >
+            <img src="imagens/icone_professor.png" alt="Imagem 2" class="image">
+            <p class="name">Professor(a)</p>
+        </a>
+    </div>
+    <div class="box">
+        <a href="loginADM.html" >
+            <img src="imagens/icone_adm.png" alt="Imagem 3" class="image">
+            <p class="name">ADM</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

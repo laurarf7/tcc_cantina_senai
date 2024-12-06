@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuário - Ver QR Code</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+          }
+          
+          .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #a70f24;
+            height: 50px;
+            display: flex-direction row;
+            flex-direction: row;
+          }
+        
+          .logo img {
+            width: 120px;
+          }
+        
+          .nav-links {
+            display: flex;
+                gap: 20px;
+                align-items: baseline;
+          }
+        
+          .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            margin: 5px 0;
+            text-align: right;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+          }
+        
+          .nav-links a:hover {
+            background-color: white ;
+            color: #a70f24;
+          }
+        
+          .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+          }
+        
+          .hamburger span {
+            height: 3px;
+            width: 25px;
+            background-color: aliceblue;
+            margin: 3px 0;
+            transition: 0.3s;
+          }
+        
+          @media (max-width: 768px) {
+            .hamburger {
+              display: flex;
+            }
+        
+            .nav-links {
+              display: none;
+              flex-direction: column;
+              position: absolute;
+              top: 100px;
+              right: 0;
+              background-color: #a70f24;
+              width: 100%;
+              padding: 10px;
+              z-index: 1050;
+            }
+        
+            .nav-links.menu-active {
+              display: flex;
+              align-items: flex-start;
+            }
+    
+             /* Estilo padrão (desktop) */
+      @media (min-width: 768px) {
+        .dropdown-menu a {
+          color: #a70f24 !important; /* Vermelho no desktop */
+        }
+      }
+    
+      /* Estilo para mobile */
+      @media (max-width: 768px) {
+        .dropdown-menu a {
+          color: white !important; /* Branco no mobile */
+        }
+      }
+        
+            .dropdown-menu {
+          display: none;
+          flex-direction: column;
+          padding-left: 10px;
+          background-color: #a70f24 !important; /* Garantir que a cor de fundo seja aplicada */
+          color: white !important; /* Garantir que a cor do texto seja aplicada */
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          z-index: 1050;
+        }
+        
+        .dropdown-menu.show {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-content: space-between;
+          align-items: flex-start;
+        }
+      }
+    
+      .dropdown-perfil {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-menu-perfil {
+        display: none; /* Oculto por padrão */
+        position: absolute;
+        background-color: white;
+        color: #a70f24;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-top: 10px;
+      }
+      
+      .dropdown-menu-perfil a {
+        color: #a70f24;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: large;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      
+      .dropdown-menu-perfil a:hover {
+        background-color: #a70f24;
+        color: white;
+      }
+
+        /*******************************************************************************************/
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 10px 0;
+            padding: 12px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 450px;  /* Largura menor */
+            margin: 15px auto; /* Centraliza o conteúdo */
+        }
+
+        /* Estilo para o texto em negrito (<strong>) */
+        strong {
+            font-weight: bold;
+            color: #2e3a59;
+        }
+
+        /* Estilo para os valores exibidos (<span>) */
+        span {
+            color: #555;
+            font-weight: normal;
+        }
+
+        /* Estilo do título principal */
+        h1 {
+            font-size: 2rem;
+            color: #2e3a59;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para os subtítulos */
+        h2 {
+            font-size: 1.6rem;
+            color: #2e3a59;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* Estilo para o QR Code */
+        #qrCodeDisplay {
+            display: block;
+            margin: 20px auto; /* Centraliza o QR code */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 200px;
+        }
+
+        /* Estilo para o botão do WhatsApp */
+        #whatsappButton {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin: 30px auto;
+            padding: 12px;
+            background-color: #25D366;
+            color: white;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #whatsappButton:hover {
+            background-color: #128C7E;
+        }
+
+        /* Seções gerais */
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            #qrCodeDisplay {
+                max-width: 150px;
+            }
+
+            #whatsappButton {
+                max-width: 220px;
+                font-size: 1rem;
+            }
+
+            p {
+                max-width: 100%; /* Para telas menores */
+            }
+        }
+
+        /* Estilos para os ícones de copiar */
+        .copy-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        .copy-icon img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .copy-icon:hover img {
+            opacity: 0.7;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <a href="homeFuncionario.html" class="home-icon">
+            <img src="imagens/home.png" alt="Página Inicial">
+          </a>
+          <div class="nav-links">
+            <a href="ver_cardapio_Funcionario.html">Cardápio</a>
+            <a href="pagamento-funcionario.html">Pagar</a>
+            <a href="imagens/Cardápio para menu de hambúrguer topográfico preto amarelo escuro e branco.pdf">Menu</a>
+            <a href="avaliacaoFuncionario.html">Avaliação</a>
+    
+    
+            <div class="dropdown-perfil">
+              <a href="perfil-Funcionario.html" style="text-decoration: none;" class="dropdown-toggle-perfil">
+                Perfil 
+              </a>
+              <div class="dropdown-menu-perfil">
+                <a href="perfil-Funcionario.html">Perfil</a>
+                <a href="perfil_dos_alunos.html">Perfil dos Alunos</a>
+              </div>
+            </div>
+    
+    
+            <div class="dropdown">
+              <a href="reservas_Funcionario.html" style="text-decoration: none; " class="dropdown-toggle">
+                Reserva 
+              </a>
+              <div class="dropdown-menu">
+                <a href="reservas_Funcionario.html" style="color: #a70f24; " >Reservar</a>
+                <br>
+                <br>
+                <a href="suas-reservas-funcionario.html"style="color: #a70f24;">Histórico </a>
+              </div>
+            </div>
+          </div>
+          <div class="logo">
+            <img src="imagens/SENAI_São_Paulo_logo.png" alt="Logo">
+          </div>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        </header>
+
+    <h1 style="padding: 40px;">Pagamento</h1>
+    <img id="qrCodeDisplay" alt="QR Code do PIX" style="width:200px; height:auto;">
+    
+    <p>
+        <strong>Chave PIX:</strong>
+        <span id="pixKeyDisplay"></span>
+        <button class="copy-icon" data-clipboard-target="#pixKeyDisplay" title="Copiar">
+            <img src="imagens/copiar.png" alt="Copiar">
+        </button>
+    </p>
+    <p>
+        <strong>Número para Comprovação:</strong>
+        <span id="paymentNumberDisplay"></span>
+        <button class="copy-icon" data-clipboard-target="#paymentNumberDisplay" title="Copiar">
+            <img src="imagens/copiar.png" alt="Copiar">
+        </button>
+    </p>
+
+    <h2>Informações do Usuário</h2>
+    <p>
+        <strong>Nome Completo:</strong>
+        <span id="nomeUsuario"></span>
+    </p>
+    <p>
+        <strong>Número de Matrícula:</strong>
+        <span id="matriculaUsuario"></span>
+    </p>
+    <p>
+        <strong>Número do NIF:</strong>
+        <span id="nifUsuario"></span>
+    </p>
+    <p>
+        <strong>Email:</strong>
+        <span id="emailUsuario"></span>
+    </p>
+
+    <h2>Enviar Comprovante pelo WhatsApp</h2>
+    <button id="whatsappButton">Enviar pelo WhatsApp</button>
+
+    <script>
+        // Função para obter dados salvos no localStorage
+        const getData = (key) => localStorage.getItem(key);
+
+        // Exibir informações do QR Code e dados do pagamento
+        const qrCodeUrl = getData('qrCodeUrl');
+        const pixKey = getData('pixKey');
+        const paymentNumber = getData('paymentNumber');
+
+        if (qrCodeUrl) {
+            document.getElementById('qrCodeDisplay').src = qrCodeUrl;
+        }
+        if (pixKey) {
+            document.getElementById('pixKeyDisplay').textContent = pixKey;
+        } else {
+            document.getElementById('pixKeyDisplay').textContent = 'Chave não definida';
+        }
+        if (paymentNumber) {
+            document.getElementById('paymentNumberDisplay').textContent = paymentNumber;
+        } else {
+            document.getElementById('paymentNumberDisplay').textContent = 'Número não definido';
+        }
+
+        // Recupera as informações do usuário logado do localStorage
+        const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+        if (usuarioLogado) {
+            // Exibe as informações do usuário na página
+            document.getElementById('nomeUsuario').textContent = `${usuarioLogado.nome} ${usuarioLogado.sobrenome}`;
+            document.getElementById('matriculaUsuario').textContent = usuarioLogado.matricula;
+            document.getElementById('nifUsuario').textContent = usuarioLogado.nif;
+            document.getElementById('emailUsuario').textContent = usuarioLogado.email;
+        } else {
+            document.getElementById('nomeUsuario').textContent = 'Usuário não encontrado';
+            document.getElementById('matriculaUsuario').textContent = 'N/A';
+            document.getElementById('emailUsuario').textContent = 'N/A';
+        }
+
+        // Redirecionar para o WhatsApp com as informações preenchidas
+        document.getElementById('whatsappButton').addEventListener('click', () => {
+            const whatsappMessage = `
+Por favor, preencha as informações abaixo e envie o comprovante de pagamento:
+
+Nome Completo: ${usuarioLogado ? `${usuarioLogado.nome} ${usuarioLogado.sobrenome}` : '[Digite aqui]'}
+Número da Matrícula: ${usuarioLogado ? usuarioLogado.matricula : '[Digite aqui]'}
+Email: ${usuarioLogado ? usuarioLogado.email : '[Digite aqui]'}
+
+Chave PIX: ${pixKey || 'Chave não definida'}
+Número para Comprovação: ${paymentNumber || 'Número não definido'}
+            `;
+            // Apenas abre a mensagem no WhatsApp sem envio automático
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappMessage.trim())}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+
+        document.querySelector('.dropdown-toggle').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o redirecionamento
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Fecha o menu se o usuário clicar fora
+        window.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(event.target)) {
+                document.querySelector('.dropdown-menu').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
